@@ -6,7 +6,7 @@ class Buber
   def initialize (taxi_array=[])
     @taxi_array = taxi_array
 
-  end
+  
 
   def run
    7.times do
