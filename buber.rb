@@ -6,7 +6,7 @@ class Buber
   def initialize (taxi_array=[])
     @taxi_array = taxi_array
 
-  
+end
 
   def run
    7.times do
@@ -19,11 +19,18 @@ class Buber
     choose_a_taxi
     driving
     pay
-
-    sleep 5
+    t2 = Thread.new(run_deoccupy)
+    t2.join
+    sleep 10
+  end
   end
 
+def run_deoccupy
+@taxi_array.each do |taxi|
+  taxi.deoccupy
+  puts "Thread 2 is running "
   end
+end
 
   def add_passenger
     puts "Your first name?"
@@ -39,7 +46,6 @@ class Buber
 
   def print_list_of_taxis
     @taxi_array.each_with_index do |taxi, index|
-       taxi.deoccupy
        puts "#{index+1}): #{taxi.name}" if taxi.available?
      end
   end
@@ -67,8 +73,7 @@ class Buber
     else amount == total
       puts "have a nice day"
     end
-@taxi_array[@input].update_time
-
+    @taxi_array[@input].update_time
   end
 
   def choose_a_taxi

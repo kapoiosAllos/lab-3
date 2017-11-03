@@ -16,7 +16,7 @@ class Spacetaxi
   end
 
   def deoccupy
-    if Time.now.to_i > @time+60
+    if Time.now.to_i > @time+10
       @available = true
     end
   end
